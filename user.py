@@ -42,8 +42,7 @@ while True:
         durasi_parkir = get_durasi_parkir()
         print(f"Durasi Parkir: {durasi_parkir} jam")
         
-    elif pilihan == 3:
-        durasi_parkir = get_durasi_parkir()  # Need to get durasi_parkir before checking jenis_kendaraan
+    elif pilihan == 3:  
         get_jenis_kendaraan(durasi_parkir)
     
     else:
