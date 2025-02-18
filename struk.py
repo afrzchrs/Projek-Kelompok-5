@@ -1,5 +1,5 @@
 # Function untuk menampilkan struk parkir
-def tamp_struk_parkir(jenis_kendaraan, plat_nomor, durasi_parkir, biaya_parkir):
+def tamp_struk_parkir (jenis_kendaraan, plat_nomor, durasi_parkir, biaya_parkir):
     if jenis_kendaraan.lower() == 'a':
         jenis_kendaraan = "Motor" 
     elif jenis_kendaraan.lower() == 'b':
