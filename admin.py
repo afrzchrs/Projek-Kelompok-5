@@ -1,5 +1,5 @@
-with open("riwayat.txt", "r") as file:
+def riwayat():
+    file = open("riwayat.txt", "r")
     b = file.read().splitlines()  
-
-b.sort()  
-print(b)
+    b.sort()  
+    print(b)
