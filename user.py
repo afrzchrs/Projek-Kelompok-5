@@ -1,54 +1,31 @@
-def get_jenis_kendaraan(durasi_parkir):
-    jenis_kendaraan = input("Masukkan jenis kendaraan (a untuk Motor, b untuk Mobil): ")
-    biaya = get_biaya_parkir(jenis_kendaraan, durasi_parkir)
-    print(f"Biaya parkir untuk jenis kendaraan {jenis_kendaraan} selama {durasi_parkir} jam adalah {biaya}.")
+from modulUser import*
+import os
 
-def get_plat_nomor():
-    plat_nomor = input("Masukkan plat nomor kendaraan: ")
-    return plat_nomor
+def user():
+    while True:
+        os.system('cls')
+        print("#=================================#")
+        print("||          LAMAN USER           ||")
+        print("#=================================#")
+        print("|| 1. Input Data Parkir          ||")
+        print("|| 2. Keluar                     ||")
+        print("#=================================#")
 
-def get_durasi_parkir():
-    durasi_parkir = int(input("Masukkan durasi parkir dalam jam: "))
-    return durasi_parkir
+        pilihan = input("Silahkan pilih satu pilihan: ")
 
-def get_biaya_parkir(jenis_kendaraan, durasi_parkir):
-    if jenis_kendaraan.lower() == 'a':  # Motor
-        if durasi_parkir > 1:
-            return 1000 + ((durasi_parkir - 1) * 1500)
-        else:
-            return 1000
-    else:  # Mobil
-        if durasi_parkir > 1:
-            return 3000 + ((durasi_parkir - 1) * 3500)
-        else:
-            return 3000
+        if pilihan == '1':
+            plat_nomor = get_plat_nomor()
+            durasi_parkir = get_durasi_parkir()
+            jenis_kendaraan = get_jenis_kendaraan()
+            biaya_parkir = get_biaya_parkir(jenis_kendaraan, durasi_parkir)
 
-while True:
-    print("#=================================#")
-    print("||          LAMAN USER           ||")
-    print("#=================================#")
-    print("|| 1. Plat Nomor Kendaraan       ||")
-    print("|| 2. Durasi Parkir              ||")
-    print("|| 3. Jenis Kendaraan            ||")
-    print("#=================================#")
-    
-    pilihan = int(input("Silahkan Pilih satu pilihan :"))
-    
-    if pilihan == 1:
-        plat_nomor = get_plat_nomor()
-        print(f"Plat Nomor Kendaraan: {plat_nomor}")
+            struk = tamp_struk_parkir(jenis_kendaraan, plat_nomor, durasi_parkir, biaya_parkir)
+            if struk:
+                simpan_struk(struk)
         
-    elif pilihan == 2:
-        durasi_parkir = get_durasi_parkir()
-        print(f"Durasi Parkir: {durasi_parkir} jam")
-        
-    elif pilihan == 3:  
-        get_jenis_kendaraan(durasi_parkir)
-    
-    else:
-        print("Input tidak valid")
+        elif pilihan == '2':
+            print("Keluar dari sistem parkir.")
+            break
 
-    ulang = input("Apakah anda ingin mencoba lagi? (y/n): ")
-    if ulang != "y":
-        print("Keluar")
-        break
+        else:
+            print("Input tidak valid. Pilih 1 atau 2.")
